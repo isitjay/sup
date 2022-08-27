@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>LOGIN</title>
+<link rel="stylesheet" href="furniture.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+
+input[type=text], input[type=password], textarea {  
+  width: 65%;  
+  padding: 15px;  
+  margin: 5px 0 22px 0;  
+  display: inline-block;  
+  border: none;  
+  background: #f1f1f1;  
+}  
+input[type=text]:focus, input[type=password]:focus {  
+  background-color: beige;  
+  outline: none;  
+}  
+
+</style>
+</head>
+<body style="background-color: beige;" >
+<div class="menu-bar">
+<ul>
+<img src="https://icon-library.com/images/armchair-icon/armchair-icon-6.jpg" width=6%></img>
+<li><a href="home.html">HOME</a></li>
+<li><a href="about.html">ABOUT</a>
+</li><li></li>
+<a href="home.html"><img src="P NK.jpeg" width="100px"></img></a><li></li>
+<li><a href="onsale.html">ON SALE</a></li>
+<li><a href="topdeals.html">TOP DEALS</a></li>
+<li><a href=""><div class="dropdown">
+  <div class="dropbtn"><img src="https://icon-library.com/images/hamburger-menu-icon-png-white/hamburger-menu-icon-png-white-10.jpg"  width=25%></img></a> 
+  <div class="dropdown-content">
+    <a href="customer.html">Customer Profile</a>
+    <a href="help.html">Help Center</a>
+
+  </div>
+</div>
+</li>
+</ul></div><br><br>
+<!--Header section ends here-->
+
+
+
+
+
+
+<div class="center">
+  <br><h2 style="color: rgb(31, 3, 3);">  LOG IN</h2> <br>
+<div class="module-border-wrap">
+
+<div class="module">
+<form action="" method="post" enctype="multipart/form-data">  
+  <div  class="container">  
+
+   <label for="email"><b>Email:</b></label>  &emsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+ <input type="text" placeholder="Enter Email" name="email" required>  &ensp;&ensp;  
+  <br>
+    <label for="psw"><b>Password:</b></label>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <input type="password" placeholder="Enter Password" name="psw" required> &ensp;&ensp;  
+    <br>
+
+   <center> <button type="submit" class="registerbtn">Login</button> 
+<b><h5><font size=3px color=white style="margin-right: 230px;">Don't have an account? <a href="customer.html" style="color: rgb(39, 3, 3);">Register Here</a></b></font></h5> 
+
+</form>  
+
+</table>
+
+
+</div>
+
+
+<?php 
+
+$host="localhost";
+$user="root";
+$password="";
+$db="login-register";
+
+mysql_connect($host,$email,$password);
+mysql_select_db($db);
+
+if(isset($_POST['email'])){
+    
+    $uname=$_POST['email'];
+    $password=$_POST['password'];
+    
+    $sql="select * from customers where user='".$email."'AND Pass='".$password."' limit 1";
+    
+    $result=mysql_query($sql);
+    
+    if(mysql_num_rows($result)==1){
+        echo " You Have Successfully Logged in";
+        exit();
+    }
+    else{
+        echo " You Have Entered Incorrect Password";
+        exit();
+    }
+        
+}
+?>
+
+
+</body>
+</html>
